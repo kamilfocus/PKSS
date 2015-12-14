@@ -1,0 +1,5 @@
+pkss_building is a complete Eclipse+CDT project, so you can simply
+import it into your workspace.
+
+Before start, you have to change the IP address and port of the server in
+the main file.
