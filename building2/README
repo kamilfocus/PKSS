@@ -1,5 +1,5 @@
-pkss_building is a complete Eclipse+CDT project, so you can simply
-import it into your workspace.
+Author: Michał Maciejewski ptibbets_at_student.agh.edu.pl
 
-Before start, you have to change the IP address and port of the server in
-the main file.
+In src/ you can find C++ project of model of building.
+
+In doc/ you can find LaTeX project of short documentation with Simulink model.

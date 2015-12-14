@@ -1,0 +1,9 @@
+This is the source code of building of PKSS (Podstawy Komputerowych
+Systemów Sterowania) laboratory on AGH Kraków.
+Author: Michał Maciejewski ptibbets_at_student.agh.edu.pl
+
+pkss_building is a complete Eclipse+CDT project, so you can simply
+import it into your workspace.
+
+Before start, you have to change the IP address and port of the server in
+the main file.

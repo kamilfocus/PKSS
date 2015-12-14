@@ -1,0 +1,9 @@
+This is short documentation of model of building from PKSS laboratory
+on AGH Kraków.
+Author: Michał Maciejewski ptibbets_at_student.agh.edu.pl
+
+This is complete Eclipse+Texlipse project, so you can simpli import it into
+your workspace.
+
+In folder data you can find Simulink model of building and script for 1st
+Z-N method.
