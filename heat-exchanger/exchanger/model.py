@@ -16,8 +16,8 @@ class Model(object):
         self.current_time = 0
         logging.info("Using tick time %ss.", self.tick_time)
 
-        self.T_PM = 10.
-        self.T_ZCO = 10.
+        self.T_PM = 50.
+        self.T_ZCO = 50.
         logging.info("Setting initial values for T_PM=%f, T_ZCO=%f", self.T_PM, self.T_ZCO)
 
     @staticmethod
@@ -26,7 +26,7 @@ class Model(object):
             # wewnetrzne
             'M_M': 3000.,
             'c_wym': 2700.,
-            'g_w': 1000.,
+            'g_w': 1.,
             'c_w': 4200.,
             'k_w': 250000.,
             'M_CO': 3000.,
@@ -53,19 +53,26 @@ class Model(object):
     def tick(self, time=None):
         if time is None:
             time = self.tick_time
-
+        # time *= 60
         logging.info('Ticking for %d seconds.', time)
 
         sw = Stopwatch()
         sw.start()
 
         y0 = np.array([self.T_PM, self.T_ZCO])
-        t = np.array([self.current_time, self.current_time + time])
-        # t = np.linspace(0, time)  # diff is about +30% in time
+        # t = np.array([self.current_time, self.current_time + time])
+        t = np.linspace(0, time)  # diff is about +30% in time
 
         Xp = odeint(Model.solve, y0, t, args=(self.prepare_matrices()))
 
-        self.T_PM, self.T_ZCO = Xp[-1]
+        T_PM, T_ZCO = Xp[-1]
+        # if T_PM < 50:
+        #     T_PM = 50
+        # if T_ZCO < 50:
+        #     T_ZCO = 50
+
+        # self.T_PM, self.T_ZCO = Xp[-1]
+        self.T_PM, self.T_ZCO = T_PM, T_ZCO
         self.current_time += time
 
         logging.info('New state, T_PM=%f, T_ZCO=%f, took %fs', self.T_PM, self.T_ZCO, sw.time_elapsed)

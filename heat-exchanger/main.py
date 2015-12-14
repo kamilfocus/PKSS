@@ -15,7 +15,7 @@ def init_logger():
 
 
 def main():
-    host = '192.168.45.67'
+    host = '192.168.1.101   '
     # host = 'localhost'
     port = 1234
     init_logger()
